@@ -1,1 +1,1 @@
-docker run -it --rm --name el tpdock/erlang:all
+docker run -it --rm  tpdock/erlang:all

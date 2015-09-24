@@ -1,10 +1,6 @@
-FROM ubuntu:trusty
+FROM tpdock/ubuntu:trusty
 
 MAINTAINER Vladimir Tarasenko vt@travelping.com
-
-RUN apt-get update; apt-get upgrade; apt-get install -y curl git vim
-
-RUN apt-get install -y build-essential libncurses5-dev openssl libssl-dev fop xsltproc unixodbc-dev clang m4 sed
 
 RUN curl -o /usr/bin/kerl https://raw.githubusercontent.com/spawngrid/kerl/master/kerl; chmod a+x /usr/bin/kerl
 
@@ -28,12 +24,10 @@ RUN kerl build 17.4 17.4; kerl install 17.4 /usr/lib/erlang/17.4; kerl cleanup 1
 RUN kerl build 17.5 17.5; kerl install 17.5 /usr/lib/erlang/17.5; kerl cleanup 17.5; rm /root/.kerl/archives/*.tar.gz
 RUN kerl build 18.0 18.0; kerl install 18.0 /usr/lib/erlang/18.0; kerl cleanup 18.0; rm /root/.kerl/archives/*.tar.gz
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-
 ADD /tools/prepare.sh /root/prepare.sh
 RUN /root/prepare.sh
 
-ENV _KERL_PATH_REMOVABLE "/usr/lib/erlang/18.0/bin"
+ENV _KERL_PATH_REMOVABLE "/usr/lib/erlang/17.4/bin"
 ENV PATH "${_KERL_PATH_REMOVABLE}:$PATH"
 
 ENV REBAR_VERSION 2.6.0
@@ -45,4 +39,4 @@ RUN cd /usr/src \
     && cp rebar /usr/bin/rebar \
     && cd / && rm -rf /usr/src/rebar-*
 
-CMD ["bash"]
+CMD . ~/.bashrc;bash
