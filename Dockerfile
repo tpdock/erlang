@@ -27,7 +27,7 @@ RUN kerl build 18.0 18.0; kerl install 18.0 /usr/lib/erlang/18.0; kerl cleanup 1
 ADD /tools/prepare.sh /root/prepare.sh
 RUN /root/prepare.sh
 
-ENV _KERL_PATH_REMOVABLE "/usr/lib/erlang/17.4/bin"
+ENV _KERL_PATH_REMOVABLE "/usr/lib/erlang/18.0/bin"
 ENV PATH "${_KERL_PATH_REMOVABLE}:$PATH"
 
 ENV REBAR_VERSION 2.6.0
