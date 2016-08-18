@@ -1,1 +1,1 @@
-docker build -t tpdock/erlang:base .
+docker build -t tpdock/erlang:latest .

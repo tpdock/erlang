@@ -1,1 +1,1 @@
-docker run -it --rm  tpdock/erlang:base
+docker run -it --rm  tpdock/erlang:latest

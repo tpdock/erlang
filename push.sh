@@ -1,1 +1,1 @@
-docker push tpdock/erlang:base
+docker push tpdock/erlang:latest
